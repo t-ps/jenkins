@@ -9,16 +9,18 @@ pipeline {
             }
         }
         stage('Build') {
-                steps {
-                    echo "Here we are builing"
-                    echo "And here are linking"
-                    echo "And this is the end of building"
-                }
-        }
-        post {
-            always {
-                echo "This is the END, no matter how previous stuff has ended :) "
+            steps {
+                echo "Here we are builing"
+                echo "And here are linking"
+                echo "And this is the end of building"
             }
         }
+
     }
+    post {
+        always {
+            echo "This is the END, no matter how previous stuff has ended :) "
+        }
+    }
+
 }
