@@ -13,6 +13,8 @@ pipeline {
                 echo "Here we are builing"
                 echo "And here are linking"
                 echo "And this is the end of building"
+                sh 'uptime'
+                sh 'uname -a'
             }
         }
 
