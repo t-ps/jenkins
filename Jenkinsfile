@@ -7,15 +7,13 @@ pipeline {
                 echo "Ha"
                 echo "dwa"
             }
-            stage('Build') {
+        }
+        stage('Build') {
                 steps {
                     echo "Here we are builing"
                     echo "And here are linking"
                     echo "And this is the end of building"
                 }
-            }
-
-
         }
         post {
             always {
