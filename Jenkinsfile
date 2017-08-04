@@ -15,6 +15,7 @@ pipeline {
                 echo "And this is the end of building"
                 sh 'uptime'
                 sh 'uname -a'
+                input "Is it OK?"
             }
         }
 
