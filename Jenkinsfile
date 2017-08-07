@@ -3,10 +3,23 @@ pipeline {
     stages {
         stage("prepare") {
             steps {
-                echo "HI This is simple, let's build some stuff"
-                echo "Ha"
-                echo "dwa"
+                echo "Checking for  "
+                echo "Param1=${params.PARAM1}"
+                echo "Machine1=${params.MACHINE1}"
+                echo "Machine2=${params.MACHINE2}"
+                echo "Machine3=${params.MACHINE3}"
+                echo "Machine4=${params.MACHINE4}"
+                echo "Machine5=${params.MACHINE5}"
+
             }
+        }
+        stage("create_LVM"){
+            steps {
+                //build job: '../VM_ACTIONS/VM_DeployLVM',
+                //parameters: [string(name: 'Volume_Group', value: 'kvm-vms'),
+                //             string(name: 'Logical_Volume_Name', value: "${MACHINE01_TYPE}")]
+            }
+
         }
         stage('Build') {
             steps {
@@ -15,7 +28,7 @@ pipeline {
                 echo "And this is the end of building"
                 sh 'uptime'
                 sh 'uname -a'
-                input "Is it OK?"
+
             }
         }
 
