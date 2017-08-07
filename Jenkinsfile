@@ -18,6 +18,7 @@ pipeline {
                 //build job: '../VM_ACTIONS/VM_DeployLVM',
                 //parameters: [string(name: 'Volume_Group', value: 'kvm-vms'),
                 //             string(name: 'Logical_Volume_Name', value: "${MACHINE01_TYPE}")]
+                echo "111"
             }
 
         }
