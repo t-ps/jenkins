@@ -2,7 +2,7 @@ pipeline {
     agent any
     stages {
         stage("prepare") {
-            steps {
+            expression {
                 echo "Checking for  "
                 echo "Param1=${params.PARAM1}"
                 echo "Machine1=${params.MACHINE1}"
@@ -10,11 +10,16 @@ pipeline {
                 echo "Machine3=${params.MACHINE3}"
                 echo "Machine4=${params.MACHINE4}"
                 echo "Machine5=${params.MACHINE5}"
+
                 def reg_check = /(server[0-9]|desktop[0-9]),([1-4]{1}),(true|false),(true|false),(true|false),(true|false)/
                 def machine_find_params = (${params.MACHINE1} =~ reg_check)
                 echo "dsds" + machine_find_params.count
                 echo machine_find_params[0][1]
                 echo machine_find_params[0][2]
+            }
+            steps {
+                echo 1
+
             }
         }
         stage("create_LVM"){
