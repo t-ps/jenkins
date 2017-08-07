@@ -20,7 +20,7 @@ pipeline {
                 }
             }
             steps {
-                echo 1
+                echo "11"
 
             }
         }
