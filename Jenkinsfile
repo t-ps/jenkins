@@ -2,8 +2,7 @@ pipeline {
     agent any
     stages {
         stage("prepare") {
-            when {
-                expression {
+            script {
                     echo "Checking for  "
                     echo "Param1=${params.PARAM1}"
                     echo "Machine1=${params.MACHINE1}"
@@ -18,7 +17,7 @@ pipeline {
                     echo machine_find_params[0][1]
                     echo machine_find_params[0][2]
                 }
-            }
+
             steps {
                 echo "11"
 
