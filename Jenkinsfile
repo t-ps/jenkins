@@ -17,6 +17,8 @@ pipeline {
                     echo "dsds" + machine_find_params.count
                     echo machine_find_params[0][1]
                     echo machine_find_params[0][2]
+                    echo machine_find_params[0][3]
+
                 }
 
             }
