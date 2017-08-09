@@ -1,53 +1,57 @@
 pipeline {
     agent any
+    parameters {
+        string(defaultValue: 'TEST', description: 'Parameter from JenkinsFike', name: 'HH_ENV' )
+        choice(choices: 'USA\nCANDA\n', description: 'Parameter from jenkinsfile', name: 'region' )
+    }
+    
     stages {
         stage("prepare") {
             steps {
                 script {
-                    echo "Checking for  "
-                    echo "Param1=${params.PARAM1}"
-                    echo "Machine1=${params.MACHINE1}"
-                    echo "Machine2=${params.MACHINE2}"
-                    echo "Machine3=${params.MACHINE3}"
-                    echo "Machine4=${params.MACHINE4}"
-                    echo "Machine5=${params.MACHINE5}"
-
-                    def reg_check = /(server[0-9]|desktop[0-9]),([1-4]{1}),(true|false),(true|false),(true|false),(true|false)/
-                    def machine_find_params = ($ { params.MACHINE1 } =~ reg_check)
-
-                    echo "machine_find_params[0][1]"
-                    echo "machine_find_params[0][2]"
-                    echo "machine_find_params[0][3]"
-
+                    def param1 = "${params.PARAM1}"
+                    def machine01 = "${params.MACHINE1}"
+                    MACHINE01 = machine01.split(',')
+                    MACHINE01_P1 = "${MACHINE01[0]}"
+                    MACHINE01_P2 = "${MACHINE01[1]}"
+                    MACHINE01_P3 = "${MACHINE01[2]}"
+                    MACHINE01_P4 = "${MACHINE01[3]}"
+                    MACHINE01_P5 = "${MACHINE01[4]}"
+                    MACHINE01_P6 = "${MACHINE01[5]}"
+                    MACHINE01_P7 = "${MACHINE01[6]}"
+                    env.PARAM1 = "${params.PARAM1}"
+                    if (true) {
+                        echo "This is inside \"SCRIPT\" "    
+                    
+                    }
                 }
-
+                echo "Steps in prepare"
+                sh 'uptime'
             }
         }
-        stage("create_LVM"){
+                //echo "START OK START "
+        stage("create_LVM") {
+             environment {
+                    Logical_Volume_Name = "${MACHINE01_P1}"
+                    Volume_Group = "kvm-vms"
+                }
             steps {
-                //build job: '../VM_ACTIONS/VM_DeployLVM',
-                //parameters: [string(name: 'Volume_Group', value: 'kvm-vms'),
-                //             string(name: 'Logical_Volume_Name', value: "${MACHINE01_TYPE}")]
-                echo "111"
+                echo "Creating LVM"
+                //sh 'echo \"/export/shares/jenkins/scripts/VM_DeployLVM.bsh ${MACHINE01[1]} kvm-vms\"'
+                sh 'echo Cos ${Logical_Volume_Name} ${Volume_Group}}'
+                echo "Fparam0=${MACHINE01[0]}"
+                echo "Fparam1=${MACHINE01[1]}"
+                echo "Fparam2=${MACHINE01[2]}"
             }
-
+                      
         }
+            
         stage('Build') {
             steps {
-                echo "Here we are builing"
-                echo "And here are linking"
-                echo "And this is the end of building"
-                sh 'uptime'
                 sh 'uname -a'
 
             }
         }
 
     }
-    post {
-        always {
-            echo "This is the END, no matter how previous stuff has ended :) "
-        }
-    }
-
 }
