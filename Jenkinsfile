@@ -219,10 +219,26 @@ pipeline {
 										//int var_par1 = var_par_s as int
 										var_par1 = "${param1}".toInteger()
 										if (var_par1 >= 1) {
-											echo "MACHINE 1"
+											echo "VM_DEPLOY_LVM MACHINE 1=${MACHINE01_P1}"
+                    	build job: '../VM_ACTIONS/VM_DeployLVM', parameters: [
+                    	        string(name: 'Volume_Group', value: 'kvm-vms'),
+                    	        string(name: 'Logical_Volume_Name', value: "${MACHINE01_P1}")]
+
 										}
 										if (var_par1 >= 2) {
 											echo "MACHINE 2"
+										}
+										if (var_par1 >= 3) {
+											echo "MACHINE 3"
+										}
+										if (var_par1 >= 4) {
+											echo "MACHINE 4"
+										}
+										if (var_par1 >= 5) {
+											echo "MACHINE 5"
+										}
+										if (var_par1 >= 6) {
+											echo "MACHINE 6"
 										}
 										//echo "TEST MACHINE01=${MACHINE01_P1}"
                     //build job: '../VM_ACTIONS/VM_DeployLVM', parameters: [
@@ -230,7 +246,6 @@ pipeline {
                     //        string(name: 'Logical_Volume_Name', value: "${MACHINE01_P1}")]
 									echo "11921903210321=${MACHINE01_P1}"
 								}
-            	echo "333333333333333333333"
 						}
 
         }
