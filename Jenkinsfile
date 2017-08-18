@@ -20,9 +20,9 @@ pipeline {
 										// Prepare parameters for machine1
 			 								def machine01 = "${params.MACHINE1}"
 		   		     	  	  MACHINE01 = machine01.split(',')
-		   		            env.MACHINE01_P1 = "${MACHINE01[0]}"
-		   		            env.MACHINE01_CPU = "${MACHINE01[1]}"
-		   		            env.MACHINE01_RAM = "${MACHINE01[2]}"
+		   		            MACHINE01_P1 = "${MACHINE01[0]}"
+		   		            MACHINE01_CPU = "${MACHINE01[1]}"
+		   		            MACHINE01_RAM = "${MACHINE01[2]}"
 		   		            MACHINE01_NET1 = "${MACHINE01[3]}"
 		   		            MACHINE01_NET2 = "${MACHINE01[4]}"
 		   		            MACHINE01_NET3 = "${MACHINE01[5]}"
@@ -49,9 +49,9 @@ pipeline {
 										// Prepare parameters for machine2
 											def machine02 = "${params.MACHINE2}"
 		   		     	  	  MACHINE02 = machine03.split(',')
-		   		            env.MACHINE02_P1 = "${MACHINE02[0]}"
-		   		            env.MACHINE02_CPU = "${MACHINE02[1]}"
-		   		            env.MACHINE02_RAM = "${MACHINE02[2]}"
+		   		            MACHINE02_P1 = "${MACHINE02[0]}"
+		   		            MACHINE02_CPU = "${MACHINE02[1]}"
+		   		            MACHINE02_RAM = "${MACHINE02[2]}"
 		   		            MACHINE02_NET1 = "${MACHINE02[3]}"
 		   		            MACHINE02_NET2 = "${MACHINE02[4]}"
 		   		            MACHINE02_NET3 = "${MACHINE02[5]}"
@@ -78,9 +78,9 @@ pipeline {
 											// Prepare parameters for machine3
 											def machine03 = "${params.MACHINE3}"
 		   		     	  	  MACHINE03 = machine03.split(',')
-		   		            env.MACHINE03_P1 = "${MACHINE03[0]}"
-		   		            env.MACHINE03_CPU = "${MACHINE03[1]}"
-		   		            env.MACHINE03_RAM = "${MACHINE03[2]}"
+		   		            MACHINE03_P1 = "${MACHINE03[0]}"
+		   		            MACHINE03_CPU = "${MACHINE03[1]}"
+		   		            MACHINE03_RAM = "${MACHINE03[2]}"
 		   		            MACHINE03_NET1 = "${MACHINE03[3]}"
 		   		            MACHINE03_NET2 = "${MACHINE03[4]}"
 		   		            MACHINE03_NET3 = "${MACHINE03[5]}"
@@ -107,9 +107,9 @@ pipeline {
 											// Prepare parameters for machine4
 											def machine04 = "${params.MACHINE4}"
 		   		     	  	  MACHINE04 = machine04.split(',')
-		   		            env.MACHINE04_P1 = "${MACHINE04[0]}"
-		   		            env.MACHINE04_CPU = "${MACHINE04[1]}"
-		   		            env.MACHINE04_RAM = "${MACHINE04[2]}"
+		   		            MACHINE04_P1 = "${MACHINE04[0]}"
+		   		            MACHINE04_CPU = "${MACHINE04[1]}"
+		   		            MACHINE04_RAM = "${MACHINE04[2]}"
 		   		            MACHINE04_NET1 = "${MACHINE04[3]}"
 		   		            MACHINE04_NET2 = "${MACHINE04[4]}"
 		   		            MACHINE04_NET3 = "${MACHINE04[5]}"
@@ -137,9 +137,9 @@ pipeline {
 											// Prepare parameters for machine5
 											def machine05 = "${params.MACHINE4}"
 		   		     	  	  MACHINE05 = machine05.split(',')
-		   		            env.MACHINE05_P1 = "${MACHINE05[0]}"
-		   		            env.MACHINE05_CPU = "${MACHINE05[1]}"
-		   		            env.MACHINE05_RAM = "${MACHINE05[2]}"
+		   		            MACHINE05_P1 = "${MACHINE05[0]}"
+		   		            MACHINE05_CPU = "${MACHINE05[1]}"
+		   		            MACHINE05_RAM = "${MACHINE05[2]}"
 		   		            MACHINE05_NET1 = "${MACHINE05[3]}"
 		   		            MACHINE05_NET2 = "${MACHINE05[4]}"
 		   		            MACHINE05_NET3 = "${MACHINE05[5]}"
@@ -165,9 +165,9 @@ pipeline {
 											// Prepare parameters for machine6
 											def machine06 = "${params.MACHINE6}"
 		   		     	  	  MACHINE06 = machine06.split(',')
-		   		            env.MACHINE06_P1 = "${MACHINE06[0]}"
-		   		            env.MACHINE06_CPU = "${MACHINE06[1]}"
-		   		            env.MACHINE06_RAM = "${MACHINE06[2]}"
+		   		            MACHINE06_P1 = "${MACHINE06[0]}"
+		   		            MACHINE06_CPU = "${MACHINE06[1]}"
+		   		            MACHINE06_RAM = "${MACHINE06[2]}"
 		   		            MACHINE06_NET1 = "${MACHINE06[3]}"
 		   		            MACHINE06_NET2 = "${MACHINE06[4]}"
 		   		            MACHINE06_NET3 = "${MACHINE06[5]}"
@@ -194,6 +194,8 @@ pipeline {
                 build job: '../DevOPS/HelloWorld'
                 echo "Steps in prepare"
                 echo "${env.NET_P_01}"
+                echo "Machine01=${MACHINE01_P1}"
+                echo "Machine01=${MACHINE01_RAM}"
                 sh 'uptime'
                 sh 'who'
             }
