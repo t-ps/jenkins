@@ -199,7 +199,7 @@ pipeline {
                 }
                 build job: '../DevOPS/HelloWorld'
                 echo "Steps in prepare"
-                echo "COS=${env.NET_01_P}"
+                echo "COS=${NET_01_P}"
                 echo "Machine01=${MACHINE01_P1}"
                 echo "Machine01=${MACHINE01_RAM}"
                 sh 'uptime'
