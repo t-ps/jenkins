@@ -15,7 +15,7 @@ pipeline {
                     echo "Before SWITCH"
                     
 										echo "SWITCH CASE 1"
-										if ( param1 == 1 ) {
+										if ( param1 >= 1 ) {
 										// Prepare parameters for machine1
 			 								def machine01 = "${params.MACHINE1}"
 		   		     	  	  MACHINE01 = machine01.split(',')
@@ -43,9 +43,6 @@ pipeline {
 											// Setting up global variable
 											env.NET_01_P = NET_01_P
 											echo "MACHINE 1 TYPE=${MACHINE01_P1} CPU=${MACHINE01_CPU} RAM=${MACHINE01_RAM} NETS=${NET_01_P}"
-		   		            env.MACHINE01_P1 = "${MACHINE01_P1}"
-		   		            env.MACHINE01_CPU = "${MACHINE01_CPU}"
-		   		            env.MACHINE01_RAM = "${MACHINE01_RAM}"
 										}
 										
 										echo "SWITCH CASE 2"
@@ -221,7 +218,7 @@ pipeline {
                     //        string(name: 'Volume_Group', value: 'kvm-vms'),
                     //        string(name: 'Logical_Volume_Name', value: "${MACHINE01_P1}")]
                 script {
-									echo "11921903210321=${env.MACHINE01_P1}"
+									echo "11921903210321=${MACHINE01_P1}"
 								}
             }
 
@@ -230,9 +227,9 @@ pipeline {
         stage('define_VM') {
             steps {
                 build job: '../VM_ACTIONS/VM_DEFINE_VM', parameters: [
-                        string(name: 'VM_NAME', value: "${env.MACHINE01_P1}"),
-                        string(name: 'VM_CPU', value: "${env.MACHINE01_CPU}"),
-                        string(name: 'VM_MEMORY', value: "${env.MACHINE01_RAM}"),
+                        string(name: 'VM_NAME', value: "${MACHINE01_P1}"),
+                        string(name: 'VM_CPU', value: "${MACHINE01_CPU}"),
+                        string(name: 'VM_MEMORY', value: "${MACHINE01_RAM}"),
                         [$class: 'com.cwctravel.hudson.plugins.extended_choice_parameter.ExtendedChoiceParameterValue', name: 'VM_NETWORK',
                          value: "${env.NET_01_P}"]]
 
