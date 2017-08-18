@@ -20,7 +20,7 @@ pipeline {
 										// Prepare parameters for machine1
 			 								def machine01 = "${params.MACHINE1}"
 		   		     	  	  MACHINE01 = machine01.split(',')
-		   		            MACHINE01_P1 = "${MACHINE01[0]}"
+		   		            def MACHINE01_P1 = "${MACHINE01[0]}"
 		   		            MACHINE01_CPU = "${MACHINE01[1]}"
 		   		            MACHINE01_RAM = "${MACHINE01[2]}"
 		   		            MACHINE01_NET1 = "${MACHINE01[3]}"
