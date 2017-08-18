@@ -212,13 +212,14 @@ pipeline {
             //    Volume_Group = "kvm-vms"
            // }
             steps {
-                echo "Creating LVM"
-                script {
+                		echo "Creating LVM"
 										echo "TEST MACHINE01=${MACHINE01_P1}"
                     build job: '../VM_ACTIONS/VM_DeployLVM', parameters: [
                             string(name: 'Volume_Group', value: 'kvm-vms'),
                             string(name: 'Logical_Volume_Name', value: "${MACHINE01_P1}")]
-                }
+                script {
+									echo "11921903210321=${MACHINE01_P1}"
+								}
             }
 
         }
