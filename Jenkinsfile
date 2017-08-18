@@ -344,7 +344,7 @@ pipeline {
 								parallel (
 									machine01: {
 										if (var_par1 >=1){
-											echo "BUDUJE MACHINE01=${MACHINE01_P1}
+											echo "BUDUJE MACHINE01=${MACHINE01_P1}"
 										}
 									
 									}
