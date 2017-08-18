@@ -43,6 +43,9 @@ pipeline {
 											// Setting up global variable
 											env.NET_01_P = NET_01_P
 											echo "MACHINE 1 TYPE=${MACHINE01_P1} CPU=${MACHINE01_CPU} RAM=${MACHINE01_RAM} NETS=${NET_01_P}"
+		   		            env.MACHINE01_P1 = MACHINE01_P1 
+		   		            env.MACHINE01_CPU = MACHINE01_CPU 
+		   		            env.MACHINE01_RAM = MACHINE01_RAM
 										}
 										
 										echo "SWITCH CASE 2"
