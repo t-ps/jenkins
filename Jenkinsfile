@@ -9,39 +9,38 @@ pipeline {
         stage("prepare") {
             steps {
                 script {
-                    def param1 = "${params.PARAM1}" as int
-                    //generate variables based on paramaters
-                    // variables will be pased when running jobs
-                    echo "Before SWITCH"
-                    
-										echo "SWITCH CASE 1"
-										if ( param1 >= 1 ) {
+                	def param1 = "${params.PARAM1}" as int
+                	//generate variables based on paramaters
+                	// variables will be pased when running jobs
+               		echo "Before SWITCH"
+                  echo "SWITCH CASE 1"
+									if ( param1 >= 1 ) {
 										// Prepare parameters for machine1
-			 								def machine01 = "${params.MACHINE1}"
-		   		     	  	  MACHINE01 = machine01.split(',')
-		   		            MACHINE01_P1 = "${MACHINE01[0]}"
-		   		            MACHINE01_CPU = "${MACHINE01[1]}"
-		   		            MACHINE01_RAM = "${MACHINE01[2]}"
-		   		            MACHINE01_NET1 = "${MACHINE01[3]}"
-		   		            MACHINE01_NET2 = "${MACHINE01[4]}"
-		   		            MACHINE01_NET3 = "${MACHINE01[5]}"
-		   		            MACHINE01_NET4 = "${MACHINE01[6]}"
-		                  NET_01_P = ""
-		                  if (MACHINE01_NET1 == 'true') {
-		                      echo "This is inside \"SCRIPT\" "
-		                      NET_01_P = 'bridge '
-		                  }
-		                  if (MACHINE01_NET2 == 'true') {
-		                      NET_01_P += 'Isolated1 '
-		                  }
-		                  if (MACHINE01_NET3 == 'true') {
-		                      NET_01_P += 'Isolated2 '
-		                  }
-		                  if (MACHINE01_NET4 == 'true') {
-		                      NET_01_P += 'Isolated3'
-		                  }
-											// Setting up global variable
-											env.NET_01_P = NET_01_P
+			 							def machine01 = "${params.MACHINE1}"
+		   		     	  	MACHINE01 = machine01.split(',')
+		   		          MACHINE01_P1 = "${MACHINE01[0]}"
+		   		          MACHINE01_CPU = "${MACHINE01[1]}"
+		   		          MACHINE01_RAM = "${MACHINE01[2]}"
+		   		          MACHINE01_NET1 = "${MACHINE01[3]}"
+		   		          MACHINE01_NET2 = "${MACHINE01[4]}"
+		   		          MACHINE01_NET3 = "${MACHINE01[5]}"
+		   		          MACHINE01_NET4 = "${MACHINE01[6]}"
+		                NET_01_P = ""
+		                if (MACHINE01_NET1 == 'true') {
+		                	echo "This is inside \"SCRIPT\" "
+		                	NET_01_P = 'bridge '
+		                }
+		                if (MACHINE01_NET2 == 'true') {
+		                	NET_01_P += 'Isolated1 '
+		                }
+		                if (MACHINE01_NET3 == 'true') {
+		                	NET_01_P += 'Isolated2 '
+		                }
+		                if (MACHINE01_NET4 == 'true') {
+		                	NET_01_P += 'Isolated3'
+		                }
+										// Setting up global variable
+										env.NET_01_P = NET_01_P
 											echo "MACHINE 1 TYPE=${MACHINE01_P1} CPU=${MACHINE01_CPU} RAM=${MACHINE01_RAM} NETS=${NET_01_P}"
 										}
 										
@@ -218,6 +217,7 @@ pipeline {
 										//var_par_s  = "${param1}"
 										//int var_par1 = var_par_s as int
 										var_par1 = "${param1}".toInteger()
+										
 										if (var_par1 >= 1) {
 											echo "VM_DEPLOY_LVM MACHINE 1=${MACHINE01_P1}"
                     	build job: '../VM_ACTIONS/VM_DeployLVM', parameters: [
@@ -226,25 +226,39 @@ pipeline {
 
 										}
 										if (var_par1 >= 2) {
-											echo "MACHINE 2"
+											echo "VM_DEPLOY_LVM MACHINE 1=${MACHINE02_P1}"
+                    	build job: '../VM_ACTIONS/VM_DeployLVM', parameters: [
+                    	        string(name: 'Volume_Group', value: 'kvm-vms'),
+                    	        string(name: 'Logical_Volume_Name', value: "${MACHINE02_P1}")]
+
+
 										}
 										if (var_par1 >= 3) {
-											echo "MACHINE 3"
+											echo "VM_DEPLOY_LVM MACHINE 1=${MACHINE03_P1}"
+                    	build job: '../VM_ACTIONS/VM_DeployLVM', parameters: [
+                    	        string(name: 'Volume_Group', value: 'kvm-vms'),
+                    	        string(name: 'Logical_Volume_Name', value: "${MACHINE03_P1}")]
 										}
 										if (var_par1 >= 4) {
-											echo "MACHINE 4"
+											echo "VM_DEPLOY_LVM MACHINE 1=${MACHINE04_P1}"
+                    	build job: '../VM_ACTIONS/VM_DeployLVM', parameters: [
+                    	        string(name: 'Volume_Group', value: 'kvm-vms'),
+                    	        string(name: 'Logical_Volume_Name', value: "${MACHINE04_P1}")]
 										}
 										if (var_par1 >= 5) {
 											echo "MACHINE 5"
+											echo "VM_DEPLOY_LVM MACHINE 1=${MACHINE05_P1}"
+                    	build job: '../VM_ACTIONS/VM_DeployLVM', parameters: [
+                    	        string(name: 'Volume_Group', value: 'kvm-vms'),
+                    	        string(name: 'Logical_Volume_Name', value: "${MACHINE05_P1}")]
 										}
 										if (var_par1 >= 6) {
 											echo "MACHINE 6"
+											echo "VM_DEPLOY_LVM MACHINE 1=${MACHINE06_P1}"
+                    	build job: '../VM_ACTIONS/VM_DeployLVM', parameters: [
+                    	        string(name: 'Volume_Group', value: 'kvm-vms'),
+                    	        string(name: 'Logical_Volume_Name', value: "${MACHINE06_P1}")]
 										}
-										//echo "TEST MACHINE01=${MACHINE01_P1}"
-                    //build job: '../VM_ACTIONS/VM_DeployLVM', parameters: [
-                    //        string(name: 'Volume_Group', value: 'kvm-vms'),
-                    //        string(name: 'Logical_Volume_Name', value: "${MACHINE01_P1}")]
-									echo "11921903210321=${MACHINE01_P1}"
 								}
 						}
 
@@ -252,14 +266,76 @@ pipeline {
 
         stage('define_VM') {
             steps {
-                build job: '../VM_ACTIONS/VM_DEFINE_VM', parameters: [
-                        string(name: 'VM_NAME', value: "${MACHINE01_P1}"),
-                        string(name: 'VM_CPU', value: "${MACHINE01_CPU}"),
-                        string(name: 'VM_MEMORY', value: "${MACHINE01_RAM}"),
-                        [$class: 'com.cwctravel.hudson.plugins.extended_choice_parameter.ExtendedChoiceParameterValue', name: 'VM_NETWORK',
-                         value: "${env.NET_01_P}"]]
+							script {
+              	if (var_par1 >= 1) {
+									echo "VM_DEFINE_VM MACHINE 1=${MACHINE01_P1}"
+									build job: '../VM_ACTIONS/VM_DEFINE_VM', parameters: [
+                 		string(name: 'VM_NAME', value: "${MACHINE01_P1}"),
+                  	string(name: 'VM_CPU', value: "${MACHINE01_CPU}"),
+                    string(name: 'VM_MEMORY', value: "${MACHINE01_RAM}"),
+                    [$class: 'com.cwctravel.hudson.plugins.extended_choice_parameter.ExtendedChoiceParameterValue', name: 'VM_NETWORK',
+                    value: "${NET_01_P}"]]
 
 
+								}
+								if (var_par1 >= 2) {
+									echo "VM_DEFINE_VM MACHINE 1=${MACHINE02_P1}"
+									build job: '../VM_ACTIONS/VM_DEFINE_VM', parameters: [
+                 		string(name: 'VM_NAME', value: "${MACHINE02_P1}"),
+                  	string(name: 'VM_CPU', value: "${MACHINE02_CPU}"),
+                    string(name: 'VM_MEMORY', value: "${MACHINE02_RAM}"),
+                    [$class: 'com.cwctravel.hudson.plugins.extended_choice_parameter.ExtendedChoiceParameterValue', name: 'VM_NETWORK',
+                    value: "${NET_02_P}"]]
+
+
+	
+
+
+								}
+								if (var_par1 >= 3) {
+									echo "VM_DEFINE_VM MACHINE 1=${MACHINE03_P1}"
+									build job: '../VM_ACTIONS/VM_DEFINE_VM', parameters: [
+                 		string(name: 'VM_NAME', value: "${MACHINE03_P1}"),
+                  	string(name: 'VM_CPU', value: "${MACHINE03_CPU}"),
+                    string(name: 'VM_MEMORY', value: "${MACHINE03_RAM}"),
+                    [$class: 'com.cwctravel.hudson.plugins.extended_choice_parameter.ExtendedChoiceParameterValue', name: 'VM_NETWORK',
+                    value: "${NET_03_P}"]]
+
+
+								}
+								if (var_par1 >= 4) {
+									echo "VM_DEFINE_VM MACHINE 1=${MACHINE04_P1}"
+									build job: '../VM_ACTIONS/VM_DEFINE_VM', parameters: [
+                 		string(name: 'VM_NAME', value: "${MACHINE04_P1}"),
+                  	string(name: 'VM_CPU', value: "${MACHINE04_CPU}"),
+                    string(name: 'VM_MEMORY', value: "${MACHINE04_RAM}"),
+                    [$class: 'com.cwctravel.hudson.plugins.extended_choice_parameter.ExtendedChoiceParameterValue', name: 'VM_NETWORK',
+                    value: "${NET_04_P}"]]
+
+
+								}
+								if (var_par1 >= 5) {
+									echo "VM_DEFINE_VM MACHINE 1=${MACHINE05_P1}"
+									 build job: '../VM_ACTIONS/VM_DEFINE_VM', parameters: [
+                 		string(name: 'VM_NAME', value: "${MACHINE05_P1}"),
+                  	string(name: 'VM_CPU', value: "${MACHINE05_CPU}"),
+                    string(name: 'VM_MEMORY', value: "${MACHINE05_RAM}"),
+                    [$class: 'com.cwctravel.hudson.plugins.extended_choice_parameter.ExtendedChoiceParameterValue', name: 'VM_NETWORK',
+                    value: "${NET_05_P}"]]
+
+								}
+								if (var_par1 >= 6) {
+									echo "VM_DEFINE_VM MACHINE 1=${MACHINE06_P1}"
+									 build job: '../VM_ACTIONS/VM_DEFINE_VM', parameters: [
+                 		string(name: 'VM_NAME', value: "${MACHINE06_P1}"),
+                  	string(name: 'VM_CPU', value: "${MACHINE06_CPU}"),
+                    string(name: 'VM_MEMORY', value: "${MACHINE06_RAM}"),
+                    [$class: 'com.cwctravel.hudson.plugins.extended_choice_parameter.ExtendedChoiceParameterValue', name: 'VM_NETWORK',
+                    value: "${NET_06_P}"]]
+
+								}
+							echo "DONE"
+							}
             }
         }
         stage('deploy_VM_PXE'){
