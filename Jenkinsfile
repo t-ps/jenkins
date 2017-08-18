@@ -193,7 +193,7 @@ pipeline {
                 }
                 build job: '../DevOPS/HelloWorld'
                 echo "Steps in prepare"
-                echo "${NET_P}"
+                echo "${env.NET_P_01}"
                 sh 'uptime'
                 sh 'who'
             }
