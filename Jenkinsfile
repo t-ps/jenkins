@@ -215,7 +215,7 @@ pipeline {
 								script{
                 		echo "Creating LVM"
                 		echo "PARAM = ${param1}"
-										def var_par1 = param1 as int
+										int var_par1 = "${param1}".toInteger()
 										 (var_par1 == 1) {
 											echo "MACHINE 1"
 										}
@@ -228,7 +228,8 @@ pipeline {
                     //        string(name: 'Logical_Volume_Name', value: "${MACHINE01_P1}")]
 									echo "11921903210321=${MACHINE01_P1}"
 								}
-            }
+            	echo "333333333333333333333"
+						}
 
         }
 
