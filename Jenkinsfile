@@ -9,13 +9,12 @@ pipeline {
         stage("prepare") {
             steps {
                 script {
-                    def param1 = "${params.PARAM1}"
+                    def param1 = "${params.PARAM1}" as int
                     //generate variables based on paramaters
                     // variables will be pased when running jobs
                     echo "Before SWITCH"
-                    cos = param1 as int
-                    echo "SWITCH CASE 1"
-
+                    
+										echo "SWITCH CASE 1"
 										if ( param1 ==1 ) {
 										// Prepare parameters for machine1
 			 								def machine01 = "${params.MACHINE1}"
@@ -44,7 +43,9 @@ pipeline {
 											// Setting up global variable
 											env.NET_01_P = NET_01_P
 
-										}  
+										}
+										
+										echo "SWITCH CASE 2"
 										if ( param1 >=2 ) {
 										// Prepare parameters for machine2
 											def machine02 = "${params.MACHINE2}"
@@ -74,6 +75,8 @@ pipeline {
 											env.NET_02_P = NET_02_P
 
 										} 
+
+										echo "SWITCH CASE 3"
 										if ( param1 >=3 ) {
 											// Prepare parameters for machine3
 											def machine03 = "${params.MACHINE3}"
@@ -103,6 +106,7 @@ pipeline {
 											env.NET_03_P = NET_03_P
 
 										}
+										echo "SWITCH CASE 4"
 										if ( param1 >=4 ) {
 											// Prepare parameters for machine4
 											def machine04 = "${params.MACHINE4}"
@@ -133,6 +137,7 @@ pipeline {
 											env.NET_04_P = NET_04_P
 	
 										}
+										echo "SWITCH CASE 5"
 										if ( param1 >=5 ) {
 											// Prepare parameters for machine5
 											def machine05 = "${params.MACHINE4}"
@@ -161,6 +166,7 @@ pipeline {
 											// Setting up global variable
 											env.NET_05_P = NET_05_P
 										}
+										echo "SWITCH CASE 6"
 										if ( param1 >=6 ) {
 											// Prepare parameters for machine6
 											def machine06 = "${params.MACHINE6}"
@@ -193,7 +199,7 @@ pipeline {
                 }
                 build job: '../DevOPS/HelloWorld'
                 echo "Steps in prepare"
-                echo "${env.NET_P_01}"
+                echo "COS=${env.NET_P_01}"
                 echo "Machine01=${MACHINE01_P1}"
                 echo "Machine01=${MACHINE01_RAM}"
                 sh 'uptime'
@@ -224,7 +230,7 @@ pipeline {
                         string(name: 'VM_CPU', value: "${MACHINE01_CPU}"),
                         string(name: 'VM_MEMORY', value: "${MACHINE01_RAM}"),
                         [$class: 'com.cwctravel.hudson.plugins.extended_choice_parameter.ExtendedChoiceParameterValue', name: 'VM_NETWORK',
-                         value: "${NET_P}"]]
+                         value: "${env.NET_01_P}"]]
 
 
             }
