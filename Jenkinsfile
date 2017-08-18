@@ -214,10 +214,11 @@ pipeline {
             steps {
 								script{
                 		echo "Creating LVM"
-										if (${param1} ==1) {
+                		echo "PARAM = ${param1}"
+										if ("${param1}" == 1) {
 											echo "MACHINE 1"
 										}
-										if (${param1} ==2) {
+										if ("${param1}" == 2) {
 											echo "MACHINE 2"
 										}
 										//echo "TEST MACHINE01=${MACHINE01_P1}"
