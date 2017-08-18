@@ -215,7 +215,7 @@ pipeline {
 								script{
                 		echo "Creating LVM"
                 		echo "PARAM = ${param1}"
-										int var_par1 = "${param1}".toInteger()
+										int var_par1 = "${param1}" as Integer
 										 (var_par1 == 1) {
 											echo "MACHINE 1"
 										}
