@@ -49,7 +49,7 @@ pipeline {
 										if ( param1 >= 2 ) {
 										// Prepare parameters for machine2
 											def machine02 = "${params.MACHINE2}"
-		   		     	  	  MACHINE02 = machine03.split(',')
+		   		     	  	  MACHINE02 = machine02.split(',')
 		   		            MACHINE02_P1 = "${MACHINE02[0]}"
 		   		            MACHINE02_CPU = "${MACHINE02[1]}"
 		   		            MACHINE02_RAM = "${MACHINE02[2]}"
