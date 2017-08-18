@@ -194,20 +194,11 @@ pipeline {
 			                }
 											// Setting up global variable
 											env.NET_06_P = NET_06_P
+											echo "MACHINE 6 TYPE=${MACHINE06_P1} CPU=${MACHINE06_CPU} RAM=${MACHINE06_RAM} NETS=${NET_06_P}"
 										}
 										
-									echo "PREPARED ${param1} MACHINES FOR DEPLOYMENT"
-									for (int x=1; x<=param1;x++) {
-											echo "Machine ${x} is ${MACHINE0${x}_P1}
-									}
                 }
                 build job: '../DevOPS/HelloWorld'
-                echo "Steps in prepare"
-								echo "MACHINE 1 = ${MACHINE01_P1}"
-								echo "MACHINE  = ${MACHINE01_P1}"
-								echo "MACHINE 1 = ${MACHINE01_P1}"
-								echo "MACHINE 1 = ${MACHINE01_P1}"
-								echo "MACHINE 1 = ${MACHINE01_P1}"
                 sh 'uptime'
                 sh 'who'
             }
