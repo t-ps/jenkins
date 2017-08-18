@@ -45,6 +45,7 @@ pipeline {
                 echo "Steps in prepare"
                 echo "${NET_P}"
                 sh 'uptime'
+                sh 'who'
             }
         }
         //echo "START OK START "
