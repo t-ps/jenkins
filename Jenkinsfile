@@ -340,10 +340,36 @@ pipeline {
         }
         stage('deploy_VM_PXE'){
             steps {
-                //build job: '../VM_ACTIONS/VM_DEPLOY_VM-PXE',
-                //parameters: [string(name: 'VM_NAME', value: "${MACHINE01_P1}")]
-                echo "NIBY DEPLOY_VM_PXE"
-            }
+							script {
+								parallel (
+									machine01: {
+										if (var_par1 >=1){
+											echo "BUDUJE MACHINE01=${MACHINE01_P1}
+										}
+									
+									}
+									machine02: {
+									
+									}
+									machine03: {
+
+									}
+									machine04: {
+
+									}
+									machine05: {
+									
+									}
+									machine06: {
+									
+									}
+								)
+
+							}
+            	//build job: '../VM_ACTIONS/VM_DEPLOY_VM-PXE',
+            	//parameters: [string(name: 'VM_NAME', value: "${MACHINE01_P1}")]
+            	echo "DONE DEPLOY_VM_PXE"
+           	}
         }
 
     }
