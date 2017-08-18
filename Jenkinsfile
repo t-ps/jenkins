@@ -15,7 +15,7 @@ pipeline {
                     echo "Before SWITCH"
                     
 										echo "SWITCH CASE 1"
-										if ( param1 ==1 ) {
+										if ( param1 == 1 ) {
 										// Prepare parameters for machine1
 			 								def machine01 = "${params.MACHINE1}"
 		   		     	  	  MACHINE01 = machine01.split(',')
@@ -42,11 +42,11 @@ pipeline {
 		                  }
 											// Setting up global variable
 											env.NET_01_P = NET_01_P
-
+											echo "INSIDE SWITCH CASE 1"
 										}
 										
 										echo "SWITCH CASE 2"
-										if ( param1 >=2 ) {
+										if ( param1 >= 2 ) {
 										// Prepare parameters for machine2
 											def machine02 = "${params.MACHINE2}"
 		   		     	  	  MACHINE02 = machine03.split(',')
