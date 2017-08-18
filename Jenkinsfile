@@ -42,7 +42,7 @@ pipeline {
 		                  }
 											// Setting up global variable
 											env.NET_01_P = NET_01_P
-											echo "INSIDE SWITCH CASE 1"
+											echo "MACHINE 1 TYPE=${MACHINE01_P1} CPU=${MACHINE01_CPU} RAM=${MACHINE01_RAM} NETS=${NET_01_P}"
 										}
 										
 										echo "SWITCH CASE 2"
@@ -73,7 +73,7 @@ pipeline {
 		                  }
 											// Setting up global variable
 											env.NET_02_P = NET_02_P
-
+											echo "MACHINE 6 TYPE=${MACHINE02_P1} CPU=${MACHINE02_CPU} RAM=${MACHINE02_RAM} NETS=${NET_02_P}"
 										} 
 
 										echo "SWITCH CASE 3"
@@ -104,7 +104,7 @@ pipeline {
 		                  }
 											// Setting up global variable
 											env.NET_03_P = NET_03_P
-
+											echo "MACHINE 3 TYPE=${MACHINE03_P1} CPU=${MACHINE03_CPU} RAM=${MACHINE03_RAM} NETS=${NET_03_P}"
 										}
 										echo "SWITCH CASE 4"
 										if ( param1 >=4 ) {
@@ -135,7 +135,7 @@ pipeline {
 
 											// Setting up global variable
 											env.NET_04_P = NET_04_P
-	
+											echo "MACHINE 4 TYPE=${MACHINE04_P1} CPU=${MACHINE04_CPU} RAM=${MACHINE04_RAM} NETS=${NET_04_P}"
 										}
 										echo "SWITCH CASE 5"
 										if ( param1 >=5 ) {
@@ -165,6 +165,8 @@ pipeline {
 		                  }
 											// Setting up global variable
 											env.NET_05_P = NET_05_P
+
+											echo "MACHINE 5 TYPE=${MACHINE05_P1} CPU=${MACHINE05_CPU} RAM=${MACHINE05_RAM} NETS=${NET_05_P}"
 										}
 										echo "SWITCH CASE 6"
 										if ( param1 >=6 ) {
