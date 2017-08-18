@@ -348,19 +348,19 @@ pipeline {
 										}
 									
 									}
-									machine02: {
+									,machine02: {
 									
 									}
-									machine03: {
+									,machine03: {
 
 									}
-									machine04: {
+									,machine04: {
 
 									}
-									machine05: {
+									,machine05: {
 									
 									}
-									machine06: {
+									,machine06: {
 									
 									}
 								)
