@@ -215,10 +215,11 @@ pipeline {
 								script{
                 		echo "Creating LVM"
                 		echo "PARAM = ${param1}"
-										if ("${param1}" == "1") {
+										var_par1 = "${param1}" as int
+										 (var_par1 == 1) {
 											echo "MACHINE 1"
 										}
-										if ("${param1}" == "2") {
+										if (var_par1 == 2) {
 											echo "MACHINE 2"
 										}
 										//echo "TEST MACHINE01=${MACHINE01_P1}"
