@@ -218,7 +218,7 @@ pipeline {
                     //        string(name: 'Volume_Group', value: 'kvm-vms'),
                     //        string(name: 'Logical_Volume_Name', value: "${MACHINE01_P1}")]
                 script {
-									echo "11921903210321=${MACHINE01_P1}"
+									echo "11921903210321=${env.MACHINE01_P1}"
 								}
             }
 
