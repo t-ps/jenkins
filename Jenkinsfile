@@ -230,9 +230,9 @@ pipeline {
         stage('define_VM') {
             steps {
                 build job: '../VM_ACTIONS/VM_DEFINE_VM', parameters: [
-                        string(name: 'VM_NAME', value: "${MACHINE01_P1}"),
-                        string(name: 'VM_CPU', value: "${MACHINE01_CPU}"),
-                        string(name: 'VM_MEMORY', value: "${MACHINE01_RAM}"),
+                        string(name: 'VM_NAME', value: "${env.MACHINE01_P1}"),
+                        string(name: 'VM_CPU', value: "${env.MACHINE01_CPU}"),
+                        string(name: 'VM_MEMORY', value: "${env.MACHINE01_RAM}"),
                         [$class: 'com.cwctravel.hudson.plugins.extended_choice_parameter.ExtendedChoiceParameterValue', name: 'VM_NETWORK',
                          value: "${env.NET_01_P}"]]
 
