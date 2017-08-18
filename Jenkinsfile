@@ -73,7 +73,7 @@ pipeline {
 		                  }
 											// Setting up global variable
 											env.NET_02_P = NET_02_P
-											echo "MACHINE 6 TYPE=${MACHINE02_P1} CPU=${MACHINE02_CPU} RAM=${MACHINE02_RAM} NETS=${NET_02_P}"
+											echo "MACHINE 2 TYPE=${MACHINE02_P1} CPU=${MACHINE02_CPU} RAM=${MACHINE02_RAM} NETS=${NET_02_P}"
 										} 
 
 										echo "SWITCH CASE 3"
@@ -210,10 +210,11 @@ pipeline {
             //environment {
             //   Logical_Volume_Name = "${MACHINE01_P1}"
             //    Volume_Group = "kvm-vms"
-            //}
+           // }
             steps {
                 echo "Creating LVM"
                 script {
+										echo "TEST MACHINE01=${MACHINE01_P1}"
                     build job: '../VM_ACTIONS/VM_DeployLVM', parameters: [
                             string(name: 'Volume_Group', value: 'kvm-vms'),
                             string(name: 'Logical_Volume_Name', value: "${MACHINE01_P1}")]
