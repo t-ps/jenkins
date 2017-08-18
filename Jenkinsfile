@@ -345,23 +345,50 @@ pipeline {
 									machine01: {
 										if (var_par1 >=1){
 											echo "BUDUJE MACHINE01=${MACHINE01_P1}"
+            					build job: '../VM_ACTIONS/VM_DEPLOY_VM-PXE',
+            						parameters: [string(name: 'VM_NAME', value: "${MACHINE01_P1}")]
 										}
 									
 									}
 									,machine02: {
-									
+										if (var_par1 >=2){
+											echo "BUDUJE MACHINE01=${MACHINE02_P1}"
+            					build job: '../VM_ACTIONS/VM_DEPLOY_VM-PXE',
+            						parameters: [string(name: 'VM_NAME', value: "${MACHINE02_P1}")]
+										}
+
 									}
 									,machine03: {
+										if (var_par1 >=3){
+											echo "BUDUJE MACHINE01=${MACHINE03_P1}"
+            					build job: '../VM_ACTIONS/VM_DEPLOY_VM-PXE',
+            						parameters: [string(name: 'VM_NAME', value: "${MACHINE03_P1}")]
+										}
 
 									}
 									,machine04: {
+										if (var_par1 >=4){
+											echo "BUDUJE MACHINE01=${MACHINE04_P1}"
+            					build job: '../VM_ACTIONS/VM_DEPLOY_VM-PXE',
+            						parameters: [string(name: 'VM_NAME', value: "${MACHINE04_P1}")]
+										}
 
 									}
 									,machine05: {
-									
+										if (var_par1 >=5){
+											echo "BUDUJE MACHINE01=${MACHINE05_P1}"
+            					build job: '../VM_ACTIONS/VM_DEPLOY_VM-PXE',
+            						parameters: [string(name: 'VM_NAME', value: "${MACHINE05_P1}")]
+										}
+
 									}
 									,machine06: {
-									
+										if (var_par1 >=6){
+											echo "BUDUJE MACHINE01=${MACHINE06_P1}"
+            					build job: '../VM_ACTIONS/VM_DEPLOY_VM-PXE',
+            						parameters: [string(name: 'VM_NAME', value: "${MACHINE06_P1}")]
+										}
+
 									}
 								)
 
